@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # WhatsApp Chatbot Backend Simulation
 
 A simple WhatsApp chatbot backend simulation built with **Java 21** and **Spring Boot 3.4.4**.
