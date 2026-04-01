@@ -1,0 +1,14 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.m2/
+.mvn/maven-3.9.6/
+*.class
+*.jar
+*.war
+*.log
+.idea/
+*.iml
+.DS_Store
+*.pid
+app_*.log
+.m2repo/
