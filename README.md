@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # WhatsApp Chatbot Backend Simulation
 
 A simple WhatsApp chatbot backend simulation built with **Java 21** and **Spring Boot 3.4.4**.
@@ -118,3 +119,6 @@ curl http://localhost:8282/webhook
 ## License
 
 MIT License - free to use for assignments and projects.
+=======
+# WhatsApp_chat
+>>>>>>> 598dd3a43611b2812b82198d64a1a00eae05a03d
