@@ -68,6 +68,13 @@ class WhatsappChatbotApplicationTests {
     }
 
     @Test
+    void testNullMessageGetsDefaultReply() {
+        IncomingMessage msg = new IncomingMessage("919876543210", null, "Test", null);
+        OutgoingMessage reply = chatbotService.processMessage(msg);
+        assertThat(reply.getReply()).contains("didn't understand");
+    }
+
+    @Test
     void testReplyToField() {
         IncomingMessage msg = new IncomingMessage("919876543210", null, "Test", "Hi");
         OutgoingMessage reply = chatbotService.processMessage(msg);

@@ -21,12 +21,12 @@ public class WebhookController {
         this.chatbotService = chatbotService;
     }
 
-    @PostMapping(consumes = "application/json", produces = "text/plain")
-    public ResponseEntity<String> receiveMessageJson(
+    @PostMapping(consumes = "application/json", produces = "application/json")
+    public ResponseEntity<OutgoingMessage> receiveMessageJson(
             @Valid @RequestBody IncomingMessage incoming) {
 
         OutgoingMessage reply = chatbotService.processMessage(incoming);
-        return ResponseEntity.ok(reply.getReply());
+        return ResponseEntity.ok(reply);
     }
 
     @PostMapping(consumes = "text/plain", produces = "text/plain")

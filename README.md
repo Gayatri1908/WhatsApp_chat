@@ -1,90 +1,83 @@
-<<<<<<< HEAD
 # WhatsApp Chatbot Backend Simulation
 
-A simple WhatsApp chatbot backend simulation built with **Java 21** and **Spring Boot 3.4.4**.
+A simple WhatsApp chatbot backend simulation built with Spring Boot.
 
 ## Features
 
-- **REST API Webhook** (`POST /webhook`) - Receives simulated WhatsApp messages
-- **Predefined Replies** - Keyword-based auto-responses (case-insensitive):
-  | Input | Response |
-  |-------|----------|
-  | `Hi` | Hello! How can I help you today? |
-  | `Hello` | Hi there! Welcome to our WhatsApp chatbot! |
-  | `Bye` | Goodbye! Have a great day! |
-  | `Help` | Lists available commands |
-  | `Thanks` / `Thank you` | You're welcome! |
-  | _anything else_ | Default "type help" response |
-- **Message Logging** - Every incoming message is logged with timestamp, sender, and content
-- **Input Validation** - Clean error responses for malformed requests
-- **Webhook Verification** - `GET /webhook` endpoint mirrors WhatsApp verification flow
+- REST API webhook: `POST /webhook`
+- Predefined replies for common messages
+- Message logging with timestamps
+- Input validation and structured error responses
+- Webhook verification via `GET /webhook`
 
 ## Project Structure
 
 ```
 whatsapp-chatbot/
 ├── pom.xml
-├── Dockerfile                        # For Render deployment
+├── Dockerfile
+├── chat.sh
+├── chat.ps1
 ├── src/main/java/com/chatbot/whatsapp/
-│   ├── WhatsappChatbotApplication.java    # Main entry point
+│   ├── WhatsappChatbotApplication.java
 │   ├── controller/
-│   │   ├── WebhookController.java         # REST /webhook endpoint
-│   │   └── GlobalExceptionHandler.java    # Error handling
+│   │   ├── WebhookController.java
+│   │   └── GlobalExceptionHandler.java
 │   ├── model/
-│   │   ├── IncomingMessage.java           # Request DTO
-│   │   └── OutgoingMessage.java           # Response DTO
+│   │   ├── IncomingMessage.java
+│   │   └── OutgoingMessage.java
 │   └── service/
-│       └── ChatbotService.java            # Chatbot logic & logging
+│       └── ChatbotService.java
 └── src/test/java/com/chatbot/whatsapp/
-    └── WhatsappChatbotApplicationTests.java  # Unit + integration tests
+    └── WhatsappChatbotApplicationTests.java
 ```
 
 ## Prerequisites
 
-- Java 21+
-- Maven 3.8+
+- Java 17 or later
 
 ## Run Locally
 
 ```bash
-git clone https://github.com/Subhra1432/WA_CHAT.git
-cd whatsapp-chatbot
 ./mvnw spring-boot:run
 ```
 
-The server starts at **http://localhost:8282**
+The server starts at [http://localhost:8080](http://localhost:8080).
 
 ## Chat with the Bot
 
-The easiest way to interact is with the new **Interactive Modes**:
+Use the interactive script that matches your shell:
 
-### Option 1: Web Interface
-Just open your browser to:
-**[http://localhost:8282](http://localhost:8282)**
-
----
-
-### Option 2: Terminal Chat
-No more typing long curl commands. Just run the interactive script:
 ```bash
 ./chat.sh
 ```
 
----
+PowerShell:
 
-### Option 3: Advanced Mode
-If you need to simulate specific sender names or test the JSON API directly:
+```powershell
+.\chat.ps1
+```
 
-#### Send "Hi"
+Windows terminal shortcut:
+
+```powershell
+.\chat.cmd
+```
+
+## Example Requests
+
+Send a message:
+
 ```bash
-curl -X POST http://localhost:8282/webhook \
+curl -X POST http://localhost:8080/webhook \
   -H "Content-Type: application/json" \
   -d '{"from":"919876543210","name":"Subhrakanta","message":"Hi"}'
 ```
 
-#### Health Check
+Health check:
+
 ```bash
-curl http://localhost:8282/webhook
+curl http://localhost:8080/webhook
 ```
 
 ## Run Tests
@@ -93,32 +86,9 @@ curl http://localhost:8282/webhook
 ./mvnw test
 ```
 
-## Deploy on Render
+## Notes
 
-1. Push to GitHub
-2. Go to [render.com](https://render.com) -> **New Web Service**
-3. Connect your GitHub repo
-4. Configure:
-   - **Build Command:** `./mvnw clean package -DskipTests`
-   - **Start Command:** `java -jar target/whatsapp-chatbot-0.0.1-SNAPSHOT.jar`
-   - **Environment:** `Docker`
-5. Deploy!
-
-## Tech Stack
-
-| Technology | Purpose |
-|------------|---------|
-| Java 21 (JDK 21) | Language |
-| Spring Boot 3.4.4 | Framework |
-| Spring Web | REST API |
-| Jakarta Validation | Input validation |
-| Lombok | Boilerplate reduction |
-| JUnit 5 + MockMvc | Testing |
-| Maven | Build tool |
-
-## License
-
-MIT License - free to use for assignments and projects.
-=======
-# WhatsApp_chat
->>>>>>> 598dd3a43611b2812b82198d64a1a00eae05a03d
+- `chat.sh` is for Bash-compatible shells.
+- `chat.ps1` is the Windows PowerShell equivalent.
+- `chat.cmd` is a Windows terminal launcher for PowerShell users.
+- The application listens on port `8080` by default.

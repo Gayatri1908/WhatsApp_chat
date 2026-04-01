@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class ChatbotService {
@@ -40,7 +41,10 @@ public class ChatbotService {
         logger.info("    Message   : {}", incoming.getMessage());
         logger.info("------------------------------------------------");
 
-        String userMessage = incoming.getMessage().trim().toLowerCase();
+        String userMessage = Optional.ofNullable(incoming.getMessage())
+                .map(String::trim)
+                .map(String::toLowerCase)
+                .orElse("");
         String reply = PREDEFINED_REPLIES.getOrDefault(userMessage, DEFAULT_REPLY);
 
         String recipient = (incoming.getTo() != null && !incoming.getTo().isBlank()) 

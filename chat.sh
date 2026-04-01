@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL="http://localhost:8282/webhook"
+URL="http://localhost:8080/webhook"
 
 GREEN='\033[0;32m'
 CYAN='\033[0;36m'
