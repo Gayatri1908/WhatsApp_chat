@@ -47,7 +47,7 @@ whatsapp-chatbot/
 
 ```bash
 git clone https://github.com/Gayatri1908/WhatsApp_chat.git
-cd whatsapp-chatbot
+cd WhatsApp_chat
 ./mvnw spring-boot:run
 ```
 
